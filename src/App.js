@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
+import RecipeContainer from './components/RecipeContainer';
 
 function App() {
+
+  const [recipeList, setRecipeList] = useState([]);
+  const [loading, setLoading] = useState(false)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header setRecipeList={setRecipeList} setLoading={setLoading} loading={loading} recipeList={recipeList} />
+      <RecipeContainer recipeList={recipeList} setLoading={setLoading} loading={loading} />
     </div>
   );
 }
